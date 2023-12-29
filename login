@@ -8,7 +8,8 @@
 </head>
 <body>
     <h1 style="text-align: center ; margin-top: 5%;">Bejelentkezés</h1>
-    <form style="margin-left: 42%; margin-top: 20%;">
+    <img src="user-icon-person-icon-client-symbol-login-head-sign-icon-design-vector.jpg" alt="Login icon">
+    <form style="margin-left: 42%; margin-top: 10%;">
         <label for="username">Felhasználónév:</label>
         <br>
         <input type="text" id="username" name="username" required>
