@@ -7,7 +7,8 @@
     <title>Login</title>
 </head>
 <body>
-    <form style="margin-left: 40%; margin-top: 20%;">
+    <h1 style="text-align: center ;">Bejelentkezés</h1>
+    <form style="margin-left: 42%; margin-top: 20%;">
         <label for="username">Felhasználónév:</label>
         <br>
         <input type="text" id="username" name="username" required>
