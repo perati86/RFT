@@ -19,7 +19,7 @@
         <br>
         <input type="password" id="password" name="password" required>
         <br>
-        <input type="submit" id="submit" value="Bejelentkezés">
+        <a href="main.html"><input type="submit" id="submit" value="Bejelentkezés"></a>
     </form>
 </body>
 </html>
