@@ -1,3 +1,6 @@
+<?php require_once('config.php'); ?>
+<?php require_once('database_manager.php'); ?>
+
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -21,5 +24,42 @@
         <br>
         <a href="main.html"><input type="submit" id="submit" value="Regisztráció"></a>
     </form>
+
+    <?php
+        $username = '';
+        $password = '';
+        $errorList = [];
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            if(array_key_exists('username',$_POST) && !empty($_POST['username'])) $username=$_POST['username'];
+            else $errorList[] = 'Nincs megadva felhasználónév';
+
+            if(array_key_exists('password',$_POST) && !empty($_POST['password'])) $password=$_POST['password'];
+            else $errorList[] = 'Nincs megadva jelszó';
+        
+        
+            if(count($errorList) == 0) {
+
+                $result = [];
+                $query = 'SELECT username,password FROM users WHERE users.username = \''.$username.'\';';
+                $result = select($query);
+
+                if (!empty($result)) $errorList[] = 'Ez a felhasználónév már regisztrálva van';
+                else {
+                    $insertQuery = 'INSERT INTO users(username,password) VALUES(\''.$username.'\', \''.$password.'\');';
+                    select($insertQuery);
+                    echo 'Sikeres regisztráció!';
+                }
+            }
+        }
+    ?>
+        <?php if(count($errorList) > 0): ?>
+            <p>Az alábbi hibák merültek fel:</p>
+            <ul>
+                <?php for($i = 0; $i < count($errorList); $i++): ?>
+                    <li><?=$errorList[$i]?></li>
+                <?php endfor;?>
+            </ul>
+        <?php endif; ?>
 </body>
 </html>
