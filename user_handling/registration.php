@@ -26,7 +26,8 @@
         <br>
         <input type="password" id="rep_password" name="rep_password" required>
         <br>
-        <a href="main.html"><input type="submit" id="submit" value="Regisztráció"></a>
+        <a href="../main.html"><input type="submit" id="submit" value="Regisztráció"></a>
+        <a href="login.php"><input value="Már regisztráltam"></a>
     </form>
 
     <?php
@@ -81,6 +82,7 @@
                     $insertQuery = 'INSERT INTO users(username,password) VALUES(\''.$username.'\', \''.crypt($password,'p8a6').'\');';
                     select($insertQuery);
                     echo 'Sikeres regisztráció!';
+                    header('Refresh:0; url=http://localhost/rft_amoba/RFT/main.html');
                 }
             }
         }
