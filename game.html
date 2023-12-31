@@ -11,23 +11,29 @@
     <h1 id="heading" style="text-align: center; margin-top: 3%;margin-bottom: 3%;">Válasz játék módot</h1>
     <table style="margin-left: 38%; visibility: visible;" id="selection">
         <tr>
-            <td style="padding-right: 50px;"><input type="submit" id="2player" value="2 játékos mód"></td>
+            <td style="padding-right: 50px;"><input onclick="TwoPlayerGame()" type="submit" id="2player" value="2 játékos mód"></td>
             <td><input type="submit" id="oneplayer" value="Gép elleni mód"></td>
         </tr>
     </table>
 
     <div style="visibility: visible;" class="game">
-        <div id="gameContainer">
-            <div index="0" class="cell"></div>
-            <div index="1" class="cell"></div>
-            <div index="2" class="cell"></div>
-            <div index="3" class="cell"></div>
-            <div index="4" class="cell"></div>
-            <div index="5" class="cell"></div>
-            <div index="6" class="cell"></div>
-            <div index="7" class="cell"></div>
-            <div index="8" class="cell"></div>
-        </div>
+        <table style="margin-top: 5%; margin-left: 33%; border: solid black; height: 420px; width: 420px;">
+            <tr style="border: solid black;">
+                <td index="0" class="cell" style="border: solid black;"></td>
+                <td index="1" class="cell" style="border: solid black;"></td>
+                <td index="2" class="cell" style="border: solid black;"></td>
+            </tr>
+            <tr style="border: solid black;">
+                <td index="3" class="cell" style="border: solid black;"></td>
+                <td index="4" class="cell" style="border: solid black;"></td>
+                <td index="5" class="cell" style="border: solid black;"></td>
+            </tr>
+            <tr style="border: solid black;">
+                <td index="6" class="cell" style="border: solid black;"></td>
+                <td index="7" class="cell" style="border: solid black;"></td>
+                <td index="8" class="cell" style="border: solid black;"></td>
+            </tr>
+        </table>
         <br>
         <table style="margin-left: 38%; margin-top: 1%;">
             <tr>
