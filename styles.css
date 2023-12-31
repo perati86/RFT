@@ -3,6 +3,7 @@
     grid-template-columns: repeat(3,auto);
     width: 240px;
     margin: auto;
+    visibility: hidden;
 }
 .cell{
     width: 80px;
