@@ -1,0 +1,11 @@
+#gameContainer{
+    display:grid;
+    grid-template-columns: repeat(3,auto);
+    width: 240px;
+    margin: auto;
+}
+.cell{
+    width: 80px;
+    height: 80px;
+    border: 1px solid black;
+}
