@@ -47,8 +47,6 @@ function CellClicked(cell, index){
 }
 
 function checkOutcome(){
-    let roundWon = false;
-
     for(let i = 0; i < winConditions.length; i++){
         const condition = winConditions[i];
         const cell1 = options[condition[0]];
@@ -56,14 +54,13 @@ function checkOutcome(){
         const cell3 = options[condition[2]];
 
         if(cell1 == cell2 && cell2 == cell3 && (cell1 == "X" || cell1 == "O")){
-            roundWon = true;
             heading.innerHTML = "A játék győztese: ".concat(currentPlayer);
             running = false;
             break;
         }
     }
 
-    if(!options.includes("")){
+    if(!options.includes("") && running){
         heading.innerHTML = "Döntetlen!";
         running = false;
     }
