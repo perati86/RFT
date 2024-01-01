@@ -57,14 +57,14 @@ function checkOutcome(){
 
         if(cell1 == cell2 && cell2 == cell3 && (cell1 == "X" || cell1 == "O")){
             roundWon = true;
-            heading.innerHTML = "A játék nyertese: ".concat(currentPlayer);
+            heading.innerHTML = "A játék győztese: ".concat(currentPlayer);
             running = false;
             break;
         }
     }
 
     if(!options.includes("")){
-        heading.innerHTML = "Draw!";
+        heading.innerHTML = "Döntetlen!";
         running = false;
     }
 }
