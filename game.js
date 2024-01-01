@@ -59,16 +59,21 @@ function BotMove(){
     botStartText.style.visibility = "collapse";
     let opponentIndexes = getIndexesOfOpponent();
     let botIndexes = getIndexesOfBot();
-    let moveIndex = 0;
-    switch(countNonEmptyElements(options))
+    let moveIndex = -1;
+    switch(opponentIndexes.length + botIndexes.length)
     {
         case 1:
             if (corners.includes(opponentIndexes[0]))
                 moveIndex = 4;
             else
                 moveIndex = corners[Math.floor(Math.random() * corners.length)];
-
+            break;
+        case 2:
+            if (options[4] === "")
+                moveIndex = 4;
     }
+    if (moveIndex >= 0)
+        CellClicked(cells[moveIndex], moveIndex);
 }
 
 function countNonEmptyElements(array){
@@ -85,7 +90,7 @@ function getIndexesOfOpponent(){
     let array = [];
     for(let i = 0; i < options.length; i++)
     {
-        if (array[i] != "" && array[i] != currentPlayer)
+        if (options[i] != "" && options[i] != botIndex)
             array.push(i);    
     }
     return array;
@@ -95,7 +100,7 @@ function getIndexesOfBot(){
     let array = [];
     for(let i = 0; i < options.length; i++)
     {
-        if (array[i] == currentPlayer)
+        if (options[i] == botIndex)
             array.push(i);
     }
     return array;
@@ -141,17 +146,18 @@ function NewGame(){
     running = true;
     heading.innerHTML = "A következő játékos: ".concat(currentPlayer);
 }
-function changePlayer(){
+async function changePlayer(){
     if(currentPlayer=="X") 
     {
         currentPlayer = "O";
     }
     else currentPlayer = "X";
     heading.innerHTML = "A következő játékos: ".concat(currentPlayer);
-    if (botIncluded)
+    await delay(500);
+    if (botIncluded && currentPlayer == botIndex)
     {
         BotMove();
-    }
+    }    
 }
 
 function delay(milliseconds){
