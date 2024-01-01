@@ -38,7 +38,7 @@ function OnePlayerGame(){
     if (start < 0.4)
     {
         let firstMove = Math.floor(Math.random() * middleNumbers.length);
-        CellClicked(cells[middleNumbers[firstMove]], firstMove);
+        CellClicked(cells[middleNumbers[firstMove]], middleNumbers[firstMove]);
         botIndex = "X";
         botStartText.innerHTML = "Elvesztetted a pénzfeldobást, O-val vagy"
     }
@@ -71,6 +71,32 @@ function BotMove(){
         case 2:
             if (options[4] === "")
                 moveIndex = 4;
+            
+            else if(botIndexes[0] == 1 || botIndexes[0] == 7)
+            {
+                if (opponentIndexes[0] == botIndexes[0] - 1)
+                    moveIndex = botIndexes[0] + 1;
+                else
+                    moveIndex = botIndexes[0] - 1;
+            }
+            else if(botIndexes[0] == 3 || botIndexes[0] == 5)
+            {
+                if (opponentIndexes[0] == botIndexes[0] - 3)
+                    moveIndex = botIndexes[0] + 3;
+                else
+                    moveIndex = botIndexes[0] - 3;
+            }
+            else 
+            {
+                let repeat = true;
+                while(repeat)
+                {
+                    moveIndex = corners[Math.floor(Math.random() * corners.length)];
+                    if (options[moveIndex] == "")
+                        repeat = false;
+                }
+            }
+            break;
     }
     if (moveIndex >= 0)
         CellClicked(cells[moveIndex], moveIndex);
@@ -153,7 +179,7 @@ async function changePlayer(){
     }
     else currentPlayer = "X";
     heading.innerHTML = "A következő játékos: ".concat(currentPlayer);
-    await delay(500);
+    await delay(800);
     if (botIncluded && currentPlayer == botIndex)
     {
         BotMove();
