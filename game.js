@@ -4,6 +4,7 @@ let TwoPlayerInput = document.getElementById("TwoPlayerInput");
 let OnePlayerInput = document.getElementById("OnePlayerInput");
 let selection = document.getElementById("selection");
 let heading = document.getElementById("heading");
+let botStartText = document.getElementById("botStartText");
 TwoPlayerInput.addEventListener("click", TwoPlayerGame);
 OnePlayerInput.addEventListener("click", OnePlayerGame);
 
@@ -17,19 +18,87 @@ const winConditions = [
     [0, 4, 8],
     [2, 4, 6]
 ];
+let middleNumbers = [1,3,5,7];
+let corners = [0,2,6,8];
 let currentPlayer = "X";
 let options = ["", "", "", "", "", "", "", "", ""];
 let running = true;
+let botIncluded = false;
+let botIndex;
 
 function TwoPlayerGame(){
-    gameContainer.style.visibility = 'visible';
-    selection.style.visibility = 'hidden';
-    running = true;
-    heading.innerHTML = "A következő játékos: ".concat(currentPlayer);
+    NewGame();
 }
 
 function OnePlayerGame(){
-    alert("1");
+    NewGame();
+    botIncluded = true;
+    botStartText.style.visibility = "visible";
+    let start = Math.random();
+    if (start < 0.4)
+    {
+        let firstMove = Math.floor(Math.random() * middleNumbers.length);
+        CellClicked(cells[middleNumbers[firstMove]], firstMove);
+        botIndex = "X";
+        botStartText.innerHTML = "Elvesztetted a pénzfeldobást, O-val vagy"
+    }
+    else if(start <= 0.5)
+    {
+        CellClicked(cells[4], 4);
+        botIndex = "X";
+        botStartText.innerHTML = "Elvesztetted a pénzfeldobást, O-val vagy"
+    }
+    else
+    {
+        botIndex = "O";
+        botStartText.innerHTML = "Te nyerted a pénzfeldobást, X-szel vagy"
+    }
+}
+
+function BotMove(){
+    botStartText.style.visibility = "collapse";
+    let opponentIndexes = getIndexesOfOpponent();
+    let botIndexes = getIndexesOfBot();
+    let moveIndex = 0;
+    switch(countNonEmptyElements(options))
+    {
+        case 1:
+            if (corners.includes(opponentIndexes[0]))
+                moveIndex = 4;
+            else
+                moveIndex = corners[Math.floor(Math.random() * corners.length)];
+
+    }
+}
+
+function countNonEmptyElements(array){
+    let count = 0;
+    for(let i = 0; i < array.length; i++)
+    {
+        if (array[i] != "")
+            count++;
+    }
+    return count;
+}
+
+function getIndexesOfOpponent(){
+    let array = [];
+    for(let i = 0; i < options.length; i++)
+    {
+        if (array[i] != "" && array[i] != currentPlayer)
+            array.push(i);    
+    }
+    return array;
+}
+
+function getIndexesOfBot(){
+    let array = [];
+    for(let i = 0; i < options.length; i++)
+    {
+        if (array[i] == currentPlayer)
+            array.push(i);
+    }
+    return array;
 }
 
 function CellClicked(cell, index){
@@ -67,7 +136,10 @@ function checkOutcome(){
 }
 
 function NewGame(){
-    
+    gameContainer.style.visibility = 'visible';
+    selection.style.visibility = 'hidden';
+    running = true;
+    heading.innerHTML = "A következő játékos: ".concat(currentPlayer);
 }
 function changePlayer(){
     if(currentPlayer=="X") 
@@ -76,6 +148,10 @@ function changePlayer(){
     }
     else currentPlayer = "X";
     heading.innerHTML = "A következő játékos: ".concat(currentPlayer);
+    if (botIncluded)
+    {
+        BotMove();
+    }
 }
 
 function delay(milliseconds){
