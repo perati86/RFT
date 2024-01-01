@@ -4,6 +4,7 @@
     width: 240px;
     margin: auto;
     visibility: hidden;
+    color: white; 
 }
 .cell{
     width: 80px;
