@@ -27,8 +27,8 @@
         <input type="password" id="rep_password" name="rep_password" required>
         <br>
         <a href="../main.html"><input type="submit" id="submit" value="Regisztráció"></a>
-        <a href="login.php"><input value="Már regisztráltam"></a>
     </form>
+    <a href="login.php">Már regisztráltam</a>
 
     <?php
         $username = '';
