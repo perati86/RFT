@@ -13,7 +13,7 @@
     <h1 style="text-align: center ; margin-top: 5%;">Regisztráció</h1>
     <br>
     <img src="../images/user-icon-person-icon-client-symbol-login-head-sign-icon-design-vector.jpg" alt="Login icon" style="height: 10%; width: 10%; margin-left: 45%;">
-    <form action="" method="POST" style="margin-left: 42%; margin-top: 3%;">
+    <form action="" method="POST" style="margin-left: 43%; margin-top: 3%; margin-bottom: 2%;">
         <label for="username">Felhasználónév:</label>
         <br>
         <input type="text" id="username" name="username" required>
@@ -26,9 +26,9 @@
         <br>
         <input type="password" id="rep_password" name="rep_password" required>
         <br>
-        <a href="../main.html"><input type="submit" id="submit" value="Regisztráció"></a>
+        <a href="../main.html" style="margin-top: 1%;"><input type="submit" id="submit" value="Regisztráció"></a>
     </form>
-    <a href="login.php">Már regisztráltam</a>
+    <a href="login.php" style="margin-left: 43%;">Már regisztráltam</a>
 
     <?php
         $username = '';
