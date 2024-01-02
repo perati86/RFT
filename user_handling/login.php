@@ -13,7 +13,7 @@
     <h1 style="text-align: center ; margin-top: 5%;">Bejelentkezés</h1>
     <br>
     <img src="../images/user-icon-person-icon-client-symbol-login-head-sign-icon-design-vector.jpg" alt="Login icon" style="height: 10%; width: 10%; margin-left: 45%;">
-    <form action="" method="POST" style="margin-left: 42%; margin-top: 3%;">
+    <form action="" method="POST" style="margin-left: 42%; margin-top: 3%; ">
         <label for="username">Felhasználónév:</label>
         <br>
         <input type="text" id="username" name="username" required>
@@ -24,6 +24,8 @@
         <br>
         <a href="main.html"><input type="submit" id="submit" value="Bejelentkezés"></a>
     </form>
+    <a href="login.php">Még nem regisztráltam</a>
+
 
     <?php
         $username = '';
