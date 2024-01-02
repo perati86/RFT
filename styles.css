@@ -4,6 +4,7 @@
     width: 240px;
     margin: auto;
     visibility: hidden;
+    color: white; 
 }
 .cell{
     width: 80px;
@@ -14,3 +15,22 @@
     width: auto;
     height: auto;
 }
+.game_hatter{
+    background-image: url(images/game_img.jpg);
+    background-repeat: no-repeat;
+     background-size: cover;
+  }
+.felirat
+{
+ color: white;
+}
+ .stat_hatter{
+    background-image: url(images/stat_img.jpg);
+    background-repeat: no-repeat;
+     background-size: cover;
+  }
+  .main_hatter{
+    background-image: url(images/main_img.jpg);
+    background-repeat: no-repeat;
+     background-size: cover;
+  }
