@@ -97,6 +97,9 @@ function BotMove(){
                 }
             }
             break;
+        default:
+            moveIndex = bestBotMove();
+            break;
     }
     if (moveIndex >= 0)
         CellClicked(cells[moveIndex], moveIndex);
@@ -130,6 +133,70 @@ function getIndexesOfBot(){
             array.push(i);
     }
     return array;
+}
+
+function bestBotMove(){
+    let winnerMoves = [];
+    let defensiveMoves = [];
+    let averageMoves = [];
+    for(let i = 0; i < winConditions.length; i++){
+        const condition = winConditions[i];
+        const cell1 = options[condition[0]];
+        const cell2 = options[condition[1]];
+        const cell3 = options[condition[2]];
+
+        let botCells = [];
+        let freeCells = [];
+        let opponentCells = [];
+
+        if (cell1 == botIndex) botCells.push(condition[0]);
+        else if(cell1 == "") freeCells.push(condition[0]);
+        else opponentCells.push(condition[0]);
+
+        if (cell2 == botIndex) botCells.push(condition[1]);
+        else if(cell2 == "") freeCells.push(condition[1]);
+        else opponentCells.push(condition[1]);
+
+        if (cell3 == botIndex) botCells.push(condition[2]);
+        else if(cell3 == "") freeCells.push(condition[2]);
+        else opponentCells.push(condition[2]);
+
+        if (botCells.length == 2 && freeCells.length == 1)
+        {
+            winnerMoves.push(freeCells[0]);
+        }
+        else if(opponentCells.length == 2 && freeCells.length == 1)
+        {
+            defensiveMoves.push(freeCells[0]);
+        }
+        else if(botCells.length == 1 && freeCells.length == 2)
+        {
+            averageMoves.push(freeCells[0]);
+            averageMoves.push(freeCells[1]);
+        }
+    }
+    if(winnerMoves.length > 0)
+    {
+        return winnerMoves[Math.floor(Math.random() * winnerMoves.length)];
+    }
+    else if(defensiveMoves.length > 0)
+    {
+        return defensiveMoves[Math.floor(Math.random() * defensiveMoves.length)];
+    }
+    else if(averageMoves.length > 0)
+    {
+        return averageMoves[Math.floor(Math.random() * averageMoves.length)];
+    }
+    else
+    {
+        let freeCells = []
+        for(let i = 0; i < options.length; i++)
+        {
+            if (options[i] == "")
+                freeCells.push(i);
+        }
+        return freeCells[Math.floor(Math.random() * freeCells.length)];
+    }
 }
 
 function CellClicked(cell, index){
@@ -179,9 +246,10 @@ async function changePlayer(){
     }
     else currentPlayer = "X";
     heading.innerHTML = "A következő játékos: ".concat(currentPlayer);
-    await delay(800);
+    
     if (botIncluded && currentPlayer == botIndex)
     {
+        await delay(800);
         BotMove();
     }    
 }
