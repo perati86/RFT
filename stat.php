@@ -1,3 +1,10 @@
+<?php
+    require_once('user_handling/config.php');
+    require_once('user_handling/database_manager.php');
+
+    $query = 'SELECT * FROM stats';
+    $results = select($query);
+?>
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -29,42 +36,15 @@
             <th>Időpont</th>
             <th>Végeredmény</th>
         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
+        <?php foreach($results as $row) :?>
+            <tr>
+                <td><?=$row['username']?></td>
+                <td><?=$row['gameType']?></td>
+                <td><?=$row['gameTime']?></td>
+                <td><?=$row['result']?></td>
+            </tr>
+        <?php endforeach;?>
+        
     </table>
     <a href="main.html"><button type="button" class="btn btn-primary" style="margin-left: 47%; margin-top: 3%;">Fő Menü</button></a>
 </body>

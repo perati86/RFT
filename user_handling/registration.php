@@ -81,6 +81,8 @@
                 else {
                     $insertQuery = 'INSERT INTO users(username,password) VALUES(\''.$username.'\', \''.crypt($password,'p8a6').'\');';
                     select($insertQuery);
+                    session_start();
+                    $_SESSION['username'] = $username;
                     echo 'Sikeres regisztráció!';
                     header('Refresh:0; url=http://localhost/rft_amoba/RFT/main.html');
                 }

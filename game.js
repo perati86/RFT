@@ -5,6 +5,7 @@ let OnePlayerInput = document.getElementById("OnePlayerInput");
 let selection = document.getElementById("selection");
 let heading = document.getElementById("heading");
 let botStartText = document.getElementById("botStartText");
+let gameFinished = document.getElementById("gameFinished");
 TwoPlayerInput.addEventListener("click", TwoPlayerGame);
 OnePlayerInput.addEventListener("click", OnePlayerGame);
 
@@ -25,13 +26,17 @@ let options = ["", "", "", "", "", "", "", "", ""];
 let running = true;
 let botIncluded = false;
 let botIndex;
+let result;
+let gameType;
 
 function TwoPlayerGame(){
     NewGame();
+    gameType = "Két játékos";
 }
 
 function OnePlayerGame(){
     NewGame();
+    gameType = "Egyjátékos";
     botIncluded = true;
     botStartText.style.visibility = "visible";
     let start = Math.random();
@@ -53,6 +58,23 @@ function OnePlayerGame(){
         botIndex = "O";
         botStartText.innerHTML = "Te nyerted a pénzfeldobást, X-szel vagy"
     }
+}
+
+function sendData() {
+    var httpr = new XMLHttpRequest();
+    httpr.open("POST","game.php",true);
+    httpr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    httpr.onreadystatechange = function(){
+        if(httpr.readyState == 4 && httpr.status == 200) {
+            alert(httpr.responseText);
+        }       
+    };
+    let text = JSON.stringify({
+        gameType: gameType,
+        result: result,
+        completed: false
+    });
+    httpr.send("gameType="+gameType+"&result="+result);
 }
 
 function BotMove(){
@@ -214,6 +236,8 @@ function CellClicked(cell, index){
 }
 
 function checkOutcome(){
+    let isFinished = false;
+
     for(let i = 0; i < winConditions.length; i++){
         const condition = winConditions[i];
         const cell1 = options[condition[0]];
@@ -223,6 +247,19 @@ function checkOutcome(){
         if(cell1 == cell2 && cell2 == cell3 && (cell1 == "X" || cell1 == "O")){
             heading.innerHTML = "A játék győztese: ".concat(currentPlayer);
             running = false;
+            isFinished = true;
+            if (botIncluded)
+            {
+                if (cell1 == botIndex)
+                    result = "Gép";
+                else
+                    result = "Játékos";
+                break;
+            }
+            if (cell1 == "X")
+                result = "X";
+            else
+                result = "O";
             break;
         }
     }
@@ -230,7 +267,11 @@ function checkOutcome(){
     if(!options.includes("") && running){
         heading.innerHTML = "Döntetlen!";
         running = false;
+        isFinished = true;
+        result = "Döntetlen";
     }
+    if (isFinished)
+        sendData();
 }
 
 function NewGame(){

@@ -1,3 +1,6 @@
+<?php require_once('user_handling/config.php'); ?>
+<?php require_once('user_handling/database_manager.php'); ?>
+
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -43,7 +46,7 @@
           <table style="margin-left: 20%;">
             <tr>
                 <td >
-                    <a href="game.html"><input onclick="NewGame()" type="submit" id="newgame" value="Új játék"></a>
+                    <a href="game.php"><input onclick="NewGame()" type="submit" id="newgame" value="Új játék"></a>
                 </td>
             </tr>
             <tr>
@@ -53,6 +56,17 @@
             </tr>
           </table>
     </div>
+    <?php
+        if(isset($_POST['gameMode'])) {
+            session_start();
+            $username = $_SESSION['username'];
+            $gameMode = $_POST['gameMode'];
+            $result = $_POST['result'];
+            $insertQuery = 'INSERT INTO stats(username, gameMode, gameTime, result) 
+                            VALUES(\''.$username.'\', \''.$gameMode.'\', SYSTIMESTAMP, \''.$result.'\');';
+            select($insertQuery);
+        }
+    ?>
     
     
 </body>
