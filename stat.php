@@ -2,7 +2,7 @@
     require_once('user_handling/config.php');
     require_once('user_handling/database_manager.php');
 
-    $query = 'SELECT * FROM stats';
+    $query = 'SELECT * FROM stats ORDER BY gameTime DESC';
     $results = select($query);
 ?>
 <!DOCTYPE html>
