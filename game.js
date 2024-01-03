@@ -66,7 +66,7 @@ function sendData() {
     httpr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     httpr.onreadystatechange = function(){
         if(httpr.readyState == 4 && httpr.status == 200) {
-            alert(httpr.responseText);
+            console.log(httpr.responseText);
         }       
     };
     let text = JSON.stringify({
@@ -74,7 +74,7 @@ function sendData() {
         result: result,
         completed: false
     });
-    httpr.send("gameType="+gameType+"&result="+result);
+    httpr.send("gameType="+gameType+"result="+result);
 }
 
 function BotMove(){

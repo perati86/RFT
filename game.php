@@ -14,7 +14,7 @@
 
 <body class="game_hatter">
     <h1 class="felirat" id="heading" style="text-align: center; margin-top: 3%;margin-bottom: 3%;">Válassz játékmódot</h1>
-    <h6 id="botStartText" style="text-align: center; visibility: collapse;"></h6>
+    <h6 class="felirat" id="botStartText" style="text-align: center; visibility: collapse;"></h6>
     <table id="selection" style="margin-left: 40%; visibility: visible;">
         <tr>
             <td style="padding-right: 70px;"><input type="submit" id="TwoPlayerInput" value="2 játékos mód"></td>
@@ -62,8 +62,8 @@
             $username = $_SESSION['username'];
             $gameMode = $_POST['gameMode'];
             $result = $_POST['result'];
-            $insertQuery = 'INSERT INTO stats(username, gameMode, gameTime, result) 
-                            VALUES(\''.$username.'\', \''.$gameMode.'\', SYSTIMESTAMP, \''.$result.'\');';
+            $insertQuery = 'INSERT INTO stats(username, gameMode, result) 
+                            VALUES(\''.$username.'\', \''.$gameMode.'\', \''.$result.'\');';
             select($insertQuery);
         }
     ?>
