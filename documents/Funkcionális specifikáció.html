@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Amőba funkcionális specifikáció</title>
+</head>
+<body>
+<h1 style="text-align: center;">Funkcionális specifikáció</h1>
+    <h2>Jelenlegi helyzet leírása</h2>
+    <p>Az amőba játék számos előnyös tulajdonsággal rendelkezik, amelyek miatt sokan élvezik és játsszák, bármely korosztályról is legyen szó. Köszönhető ez többek között a rendkívül egyszerű játékszabályoknak, amelyeket könnyen és gyorsan meg lehet tanulni. A szórakoztatás mellett pedig még különböző készségeket is fejleszt, hiszen a játékosoknak számos logikai és matematikai készségüket kell használniuk, például a minta felismerését, számszéria létrehozását, és a győzelmi stratégiák kidolgozását.</p>
+    <p>Az amőba játékot leggyakrabban fizikai formában játszák, például papíron vagy táblajátékként. Az online játék lehetősége, személyes statisztikák követése minél egyszerűbb formában kevés helyen elérhető.</p>
+
+    <h2>Vágyálomrendszer leírása</h2>
+    <p>A project célja egy amőba játék fejlesztése, amely lehetőséget biztosít a felhasználóknak a játék minél egyszerűbb elérhetőségére. Ez azért tekinthető fontosnak, mert az amőba egy gyors és dinamikus játék, amely nem igényel hosszú időt egy parti lejátszásához, így könnyen beilleszthető rövid időszakokba is, amikor éppen csak egy kis időnk van és kikapcsolódni vágyunk. A felhasználók kedvük szerint élvezhetik az amőba játékot, ellenfelekkel versenyezhetnek, barátaikkal vagy akár a gép ellen, illetve a mérkőzéseikről automatikus játékstatisztikák készülnek.</p>
+
+    <h2>Jelenlegi üzleti folyamatok modellje</h2>
+    <p>Manapság az embereknek nincs elég idejük egy új hobbira, csak alkalmi dolgokkal foglalják le magukat. 
+        Ezért alkottuk meg ezt az amőba játékot, amely tökéletes kikapcsolódási lehetőséget nyújthat, és egy átlagos böngészőből indítható. Leváltva ezzel fizikai formában zajló táblajátékokat, ahol a játékosok az X és O jelzéseket egy papírlapon helyezik el. A játék végeztével pedig manuálisan rögzítik a győzelmet, döntetlent vagy vereséget.
+        </p>
+
+    <h2>Igényelt üzleti folyamatok modellje</h2>
+    <p>Az új rendszer célja a folyamatok optimalizálása és digitalizálása, azaz online lehetőségeket biztosítani a játékosoknak, automatizálni a játékstatisztikák kezelését.</p>
+
+    <h2>Követelménylista</h2>
+    <table border="1" style="border-collapse: collapse;">
+		<tr>
+			<th>Modul</th>
+            <th>ID</th>
+            <th>Név</th>
+            <th>v.</th>
+            <th>Kifejtés</th>
+		</tr>
+
+		<tr>
+			<td>Felhasználó kezelés</td>
+            <td>K1</td>
+            <td>Regisztráció</td>
+            <td>1.0</td>
+            <td>Felhasználóknak lehetősége van regisztrálni.</td>
+		</tr>
+        <tr>
+			<td>Felhasználó kezelés</td>
+            <td>K2</td>
+            <td>Bejelentkezés</td>
+            <td>1.1</td>
+            <td>Regisztrált felhasználók bejelentkezhetnek az alkalmazásba.</td>
+		</tr>
+        <tr>
+			<td>Amőba játék</td>
+            <td>K3</td>
+            <td>Játék kezdeményezése</td>
+            <td>1.0</td>
+            <td>Felhasználóknak lehetősége van új játék kezdeményezésére.</td>
+		</tr>
+        <tr>
+			<td>Amőba játék</td>
+            <td>K4</td>
+            <td>Játékmód választás</td>
+            <td>1.1</td>
+            <td>A játékosnak lehetősége van kiválasztani a játékmódot.</td>
+		</tr>
+        <tr>
+			<td>Amőba játék</td>
+            <td>K5</td>
+            <td>Játékmenet</td>
+            <td>1.2</td>
+            <td>A játék során a játékosok váltakozva helyeznek el X és O jelzéseket a táblán.</td>
+		</tr>
+        <tr>
+			<td>Játékstatisztikák</td>
+            <td>K6</td>
+            <td>Statisztikák nyomon követése</td>
+            <td>1.0</td>
+            <td>A rendszer rögzíti a mérkőzések adatait a statisztikába.</td>
+		</tr>
+        <tr>
+			<td>Teljesítmény</td>
+            <td>K7</td>
+            <td>Teljesítmény</td>
+            <td>1.0</td>
+            <td>Az alkalmazásnak gyorsan kell reagálnia a felhasználók interakcióira.</td>
+		</tr>
+        <tr>
+			<td>Felhasználói élmény</td>
+            <td>K8</td>
+            <td>Felhasználói élmén</td>
+            <td>1.0</td>
+            <td>Az interfésznek intuitívnek és felhasználóbarátnak kell lennie.</td>
+		</tr>
+        <tr>
+			<td>Biztonság</td>
+            <td>K9</td>
+            <td>Biztonság</td>
+            <td>1.0</td>
+            <td>Felhasználói adatok biztonságos tárolása és kezelése.</td>
+		</tr>
+       
+	</table>
+	
+   <h2>Használati esetek</h2>
+    <p>Rendszerszereplők:</p>
+    <ul>
+		<li>Játékos</li>
+	</ul>
+    <p>Rendszerhasználati esetek és lefutásaik:</p>
+    <ul>
+		<li>Játékos:</li>
+		<ul>
+			<li>Regisztrálás az oldalra</li>
+			<li>Bejelentkezés az oldalra</li>
+            <li>A játékban való részvétel</li>
+			<li>Játékmód kiválasztása</li>
+            <li>Statisztika megnyitása</li>
+		</ul>
+	</ul>
+
+    <h2>Fogalomszótár</h2>
+    <p>Amőba játék: Az online játék, ahol két játékos váltakozva helyez el X és O jelzéseket egy 3x3-as táblán, a győztes az, aki először eléri az három egyforma jelzést egy sorban, oszlopban vagy átlósan.</p>
+    <p>Felhasználó: Az alkalmazás regisztrált vagy bejelentkezett használója.</p>
+    <p>Játékstatisztika: A felhasználó játékokra vonatkozó statisztikái, például győzelmek, vereségek és döntetlenek száma.</p>
+
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Amőba rendszerterv</title>
+</head>
+<body>
+	<h1 style="text-align: center;">Rendszerterv</h1>
+    <h2>Rendszer célja</h2>
+    <p>A project célja egy amőba játék fejlesztése, amely lehetőséget biztosít a felhasználóknak a játék minél egyszerűbb elérhetőségére. A felhasználók kedvük szerint élvezhetik az amőba játékot, ellenfelekkel versenyezhetnek, barátaikkal vagy akár a gép ellen, illetve a mérkőzéseikről automatikus játékstatisztikák készülnek.</p>
+    <p>A játék használatához nem szükséges regisztrálni viszont, ha elhagyjuk az oldalt akkor a pontok törlődnek.</p>
+
+    <h2>Projekt terv</h2>
+    <p>A projektet weblapra fejlesztjük front- és backend segítségével. Az elkülönített feladatokon más-más emberek dolgoznak. Frontend fejlesztése HTML/CSS segítségével történik. Célja, hogy egy letisztult, könnyen kezelhető, igényes weblapot nyújtson a felhasználó számára.</p>
+    <p>A háttérben működő programok JavaScript segítségével valósulnak meg.</p>
+
+    <h2>Követelmények</h2>
+    <h3>Funkcionális követelmények</h3>
+    <p>Felhasználói regisztráció és bejelentkezés: A felhasználóknak lehetőségük van regisztrálni az alkalmazásba. Bejelentkezés után a rendszer azonosítja és nyomon követi a felhasználókat.</p>
+    <p>Amőba játék: Két játékos közötti, illetve a gép elleni online amőba játék lehetősége. A játékosok váltakozva helyeznek el X és O jelzéseket a táblán. Játék eredményének kihirdetése (győzelem, döntetlen vagy vereség).</p>
+    <p>Játékstatisztikák: A rendszer rögzíti a felhasználók játékstatisztikáit, a végeredményeket, a játék módját, illetve az időpontot.</p>
+
+    <h3>Nem funkcionális követelmények</h3>
+    <p>Teljesítmény: Az alkalmazásnak gyorsan kell reagálnia a felhasználók interakcióira.
+        A játékmenetnek zökkenőmentesnek kell lennie a késlekedések elkerülése érdekében.
+        </p>
+    <p>Felhasználói élmény: A felhasználói felületnek intuitívnak és könnyen kezelhetőnek kell lennie.</p>
+    <p>Biztonság: Felhasználói adatok biztonságos tárolása és kezelése. Az alkalmazásnak ellenállónak kell lennie az alapvető webbiztonsági támadásokkal szemben.</p>
+
+    <h2>Funkcionális terv</h2>
+    <p>Rendszerszereplők:</p>
+    <ul>
+		<li>Játékos</li>
+	</ul>
+    <p>Rendszerhasználati esetek és lefutásaik:</p>
+    <ul>
+		<li>Játékos:</li>
+		<ul>
+			<li>Regisztrálás az oldalra</li>
+			<li>Bejelentkezés az oldalra</li>
+            <li>A játékban való részvétel</li>
+			<li>Játékmód kiválasztása</li>
+            <li>Statisztika megnyitása</li>
+		</ul>
+	</ul>
+
+    <h2>Fizikai környezet</h2>
+    <p>A rendszer fejlesztése HTML/CSS valamint JavaScript és php segítségével történik. A weblap felépítése, valamint dizájnolása a HTML/CSS nyelv implementálásával valósítandó meg. A weboldal használatához egy egyszerű böngészőre van szükség. A rendszert bármilyen operációs rendszeren és böngészőben használható lesz, valamint telefonról is.</p>
+
+    <h2>Archtitekturális terv</h2>
+    <p>A rendszerhez mindössze egy webböngészőre van szükség, amely képes JavaScript kódot futtatni. Mivel az egész a kliens oldalon fut, akár a HTML fájl megnyitásával futtatható a játék alkalmazás.</p>
+
+    <h2>Tesztterv</h2>
+    <p>Az alkalmazás elkészítése során szükség van a folyamatos tesztelésre. Tesztelni kell a gombok működését, valamint a pontszám változását, ha a játékos vagy a gép nyer. Tesztelni kell, hogy a dizájn elemek megjelenek-e, illetve úgy jelenik meg ahogy mi szerettük volna, és változtatás esetén megváltozik-e mindenhol, ahol szükséges.
+        </p>
+
+<h2>Telepítési terv</h2>
+    <p>Az alkalmazás futtatásához egy általános felhasználású böngészőre van szükség.</p>
+
+    <h2>Karbantartási terv</h2>
+    <p>Az alkalmazás bővítési lehetőségét fenntartjuk. A későbbiekben további funkciók hozzáadhatók.</p>
+
+
+</body>
+
+</html>
